@@ -35,11 +35,8 @@ class FlatIterator:
 
         return self.nested_list[self.nested_list_cursor]
 
-    # второй
-    # способ
-    # для
-    # ниндзя
-    # итераторов
+    # второй способ для ниндзя итераторов
+
 from itertools import chain
 
 class FlatIteratorEasyWay:
@@ -72,7 +69,7 @@ class FlatIteratorV2:
                 #  пытаемся получить следующий элемент
             except StopIteration:
                 if not self.iterators_queue:
-                    # если в текущем итераторе элементов не осталось и очередь иетраторов пуста
+                    # если в текущем итераторе элементов не осталось и очередь итераторов пуста
                     # завершаем цикл
                     raise StopIteration
                 else:
@@ -80,9 +77,6 @@ class FlatIteratorV2:
                     self.current_iterator = self.iterators_queue.pop()
                     continue
             if isinstance(self.current_element, list):
-                # если следующий эелемент оказался списком, то
-                # добавляем текущий итератор в очередь
-                # а текущим итераторм делаем следующий элемент
                 self.iterators_queue.append(self.current_iterator)
                 self.current_iterator = iter(self.current_element)
             else:
